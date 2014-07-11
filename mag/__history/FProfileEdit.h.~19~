@@ -9,8 +9,6 @@
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.Dialogs.hpp>
-#include <fstream>
-#include <cstdlib>
 //---------------------------------------------------------------------------
 class TForm3 : public TForm
 {

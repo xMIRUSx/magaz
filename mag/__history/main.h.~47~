@@ -75,7 +75,7 @@ public:		// User declarations
 	//двумерный вектор + одиночный дабл для профиля номинальных значений
 	//вектор для рабочего профиля
 	std::vector<double> profile;
-	std::vector< std::vector<double> > Fprofile;
+	vector<vector<double>> Fprofile;
 	double FprofileR0;
 
 	__fastcall TForm1(TComponent* Owner);

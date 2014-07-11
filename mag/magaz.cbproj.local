@@ -1,24 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.265,=C:\Users\derp\Documents\RAD Studio\Projects\Unit1.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.249,C:\Users\derp\Documents\RAD Studio\Projects\mag\magaz.cbproj=C:\Users\derp\Documents\RAD Studio\Projects\Project1.cbproj</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.948,C:\Users\derp\Documents\RAD Studio\Projects\mag\mag.h=C:\Users\derp\Documents\RAD Studio\Projects\Project1PCH1.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.223,C:\Users\derp\Documents\RAD Studio\Projects\mag\main.cpp=C:\Users\derp\Documents\RAD Studio\Projects\Unit1.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.223,C:\Users\derp\Documents\RAD Studio\Projects\mag\main.dfm=C:\Users\derp\Documents\RAD Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.223,C:\Users\derp\Documents\RAD Studio\Projects\Unit1.cpp=C:\Users\derp\Documents\RAD Studio\Projects\mag\main.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.140,=C:\Users\derp\Documents\RAD Studio\Projects\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.992,C:\Users\derp\Documents\RAD Studio\Projects\mag\magaz.cbproj=C:\Users\derp\Documents\RAD Studio\Projects\mag\magaz.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.265,=C:\Users\derp\Documents\RAD Studio\Projects\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.697,=C:\Users\derp\Documents\RAD Studio\Projects\mag\Unit2.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.550,C:\Users\derp\Documents\RAD Studio\Projects\mag\Unit2.dfm=C:\Users\derp\Documents\RAD Studio\Projects\mag\ProfileEdit.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.550,C:\Users\derp\Documents\RAD Studio\Projects\mag\Unit2.h=C:\Users\derp\Documents\RAD Studio\Projects\mag\ProfileEdit.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.550,C:\Users\derp\Documents\RAD Studio\Projects\mag\Unit2.cpp=C:\Users\derp\Documents\RAD Studio\Projects\mag\ProfileEdit.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.249,C:\Users\derp\Documents\RAD Studio\Projects\Project1.cbproj=C:\Users\derp\Documents\RAD Studio\Projects\mag\magaz.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.223,C:\Users\derp\Documents\RAD Studio\Projects\Unit1.h=C:\Users\derp\Documents\RAD Studio\Projects\mag\main.h</Transaction>
     <Transaction>1899.12.30 00:00:00.000.127,=C:\Users\derp\Documents\RAD Studio\Projects\Project1PCH1.h</Transaction>
     <Transaction>1899.12.30 00:00:00.000.085,=C:\Users\derp\Documents\RAD Studio\Projects\Project1PCH1.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.223,C:\Users\derp\Documents\RAD Studio\Projects\mag\main.h=C:\Users\derp\Documents\RAD Studio\Projects\Unit1.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.347,C:\Users\derp\Documents\RAD Studio\Projects\mag\magaz.h=C:\Users\derp\Documents\RAD Studio\Projects\mag\mag.h</Transaction>
-    <Transaction>2014.07.10 16:14:28.697,=C:\Users\derp\Documents\RAD Studio\Projects\mag\Unit2.cpp</Transaction>
-    <Transaction>2014.07.10 16:14:47.550,C:\Users\derp\Documents\RAD Studio\Projects\mag\ProfileEdit.cpp=C:\Users\derp\Documents\RAD Studio\Projects\mag\Unit2.cpp</Transaction>
-    <Transaction>2014.07.10 16:14:47.550,C:\Users\derp\Documents\RAD Studio\Projects\mag\ProfileEdit.h=C:\Users\derp\Documents\RAD Studio\Projects\mag\Unit2.h</Transaction>
-    <Transaction>2014.07.10 16:14:47.550,C:\Users\derp\Documents\RAD Studio\Projects\mag\ProfileEdit.dfm=C:\Users\derp\Documents\RAD Studio\Projects\mag\Unit2.dfm</Transaction>
-    <Transaction>2014.07.10 16:14:55.250,=C:\Users\derp\Documents\RAD Studio\Projects\mag\Unit3.cpp</Transaction>
-    <Transaction>2014.07.10 16:15:12.588,C:\Users\derp\Documents\RAD Studio\Projects\mag\FProfileEdit.h=C:\Users\derp\Documents\RAD Studio\Projects\mag\Unit3.h</Transaction>
-    <Transaction>2014.07.10 16:15:12.588,C:\Users\derp\Documents\RAD Studio\Projects\mag\FProfileEdit.cpp=C:\Users\derp\Documents\RAD Studio\Projects\mag\Unit3.cpp</Transaction>
-    <Transaction>2014.07.10 16:15:12.588,C:\Users\derp\Documents\RAD Studio\Projects\mag\FProfileEdit.dfm=C:\Users\derp\Documents\RAD Studio\Projects\mag\Unit3.dfm</Transaction>
-    <Transaction>2014.07.10 16:17:22.992,C:\Users\derp\Documents\RAD Studio\Projects\mag\magaz.cbproj=C:\Users\derp\Documents\RAD Studio\Projects\mag\magaz.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.588,C:\Users\derp\Documents\RAD Studio\Projects\mag\Unit3.h=C:\Users\derp\Documents\RAD Studio\Projects\mag\FProfileEdit.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.948,C:\Users\derp\Documents\RAD Studio\Projects\Project1PCH1.h=C:\Users\derp\Documents\RAD Studio\Projects\mag\mag.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.588,C:\Users\derp\Documents\RAD Studio\Projects\mag\Unit3.dfm=C:\Users\derp\Documents\RAD Studio\Projects\mag\FProfileEdit.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.250,=C:\Users\derp\Documents\RAD Studio\Projects\mag\Unit3.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.588,C:\Users\derp\Documents\RAD Studio\Projects\mag\Unit3.cpp=C:\Users\derp\Documents\RAD Studio\Projects\mag\FProfileEdit.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.223,C:\Users\derp\Documents\RAD Studio\Projects\Unit1.dfm=C:\Users\derp\Documents\RAD Studio\Projects\mag\main.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.347,C:\Users\derp\Documents\RAD Studio\Projects\mag\mag.h=C:\Users\derp\Documents\RAD Studio\Projects\mag\magaz.h</Transaction>
   </Transactions>
 </BorlandProject>

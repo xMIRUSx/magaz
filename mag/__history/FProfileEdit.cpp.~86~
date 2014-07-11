@@ -36,10 +36,8 @@ void __fastcall TForm3::SaveButtonClick(TObject *Sender)
 	if (SaveDialog->Execute()){
 
 		FILE *fl;
-		char* path;
-		std::wcstombs(path, SaveDialog->FileName.c_str(), 100);
+		const char* path = SaveDialog->FileName.c_str();
 		fl = fopen(path, "w");
-
 /*		fw.open(SaveDialog->FileName);
 		for(int i = 0; i < 7; i++)
 			for (int j = 0; j < 9; j++) {

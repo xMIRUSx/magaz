@@ -174,3 +174,10 @@ void __fastcall TForm1::ProfileInpButtonCreateClick(TObject *Sender)
    Form2->Free();
 }
 //---------------------------------------------------------------------------
+
+
+//двумерный вектор + одиночный дабл для профиля номинальных значений
+//вектор для рабочего профиля
+std::vector<double> profile;
+std::vector<vector<double>> Fprofile;
+double FprofileR0;

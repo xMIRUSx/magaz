@@ -4,7 +4,7 @@ object Form3: TForm3
   BorderStyle = bsDialog
   Caption = 'Form3'
   ClientHeight = 460
-  ClientWidth = 700
+  ClientWidth = 720
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -24,8 +24,8 @@ object Form3: TForm3
     Caption = #1053#1086#1074#1099#1081' '#1087#1088#1086#1092#1080#1083#1100' '#1076#1077#1081#1089#1090#1074#1080#1090#1077#1083#1100#1085#1099#1093' '#1079#1085#1072#1095#1077#1085#1080#1081' '#1089#1086#1087#1088#1086#1090#1080#1074#1083#1077#1085#1080#1103
   end
   object SaveButton: TButton
-    Left = 600
-    Top = 416
+    Left = 616
+    Top = 424
     Width = 75
     Height = 25
     Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100
@@ -33,8 +33,8 @@ object Form3: TForm3
     OnClick = SaveButtonClick
   end
   object R0: TLabeledEdit
-    Left = 170
-    Top = 418
+    Left = 280
+    Top = 426
     Width = 73
     Height = 21
     EditLabel.Width = 142
