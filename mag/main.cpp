@@ -33,7 +33,6 @@ void __fastcall TForm1::RadioPhysValClick(TObject *Sender)
 
 		ComboBoxType->Visible = false;
 		ComboBoxR0->Visible = false;
-		TemperaturePlat->Visible = false;
 	}
 	else {
 		CheckBoxOtklon->Visible = false;
@@ -43,33 +42,6 @@ void __fastcall TForm1::RadioPhysValClick(TObject *Sender)
 
 		ComboBoxType->Visible = true;
 		ComboBoxR0->Visible = true;
-		TemperaturePlat->Visible = true;
-	}
-}
-
-//---------------------------------------------------------------------------
-
-//отображение диапазонов температур, соответствующих выбранному НСХ ТС
-void __fastcall TForm1::ComboBoxTypeChange(TObject *Sender)
-{
-	switch (ComboBoxType->ItemIndex)
-	{
-		case 0:
-		case 1:
-		   TemperaturePlat->Visible = true;
-		   TemperatureCop->Visible = false;
-		   TemperatureNik->Visible = false;
-		   break;
-		case 2:
-		   TemperaturePlat->Visible = false;
-		   TemperatureCop->Visible = true;
-		   TemperatureNik->Visible = false;
-		   break;
-		case 3:
-		   TemperaturePlat->Visible = false;
-		   TemperatureCop->Visible = false;
-		   TemperatureNik->Visible = true;
-		   break;
 	}
 }
 

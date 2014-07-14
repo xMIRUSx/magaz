@@ -29,7 +29,7 @@ object Form3: TForm3
     Width = 75
     Height = 25
     Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100
-    TabOrder = 0
+    TabOrder = 1
     OnClick = SaveButtonClick
   end
   object R0: TLabeledEdit
@@ -44,9 +44,12 @@ object Form3: TForm3
     EditLabel.ParentBiDiMode = False
     EditLabel.Layout = tlBottom
     LabelPosition = lpLeft
-    TabOrder = 1
+    TabOrder = 0
+    Text = '99'
   end
   object SaveDialog: TSaveDialog
+    DefaultExt = 'txt'
+    FileName = #1053#1086#1074#1099#1081' '#1087#1088#1086#1092#1080#1083#1100'.txt'
     Filter = #1058#1077#1082#1089#1090#1086#1074#1099#1081' '#1092#1072#1081#1083'|*.txt'
     Left = 680
     Top = 424

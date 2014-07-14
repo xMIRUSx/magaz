@@ -185,13 +185,12 @@ object Form1: TForm1
   end
   object ComboBoxType: TComboBox
     Left = 8
-    Top = 133
-    Width = 94
+    Top = 151
+    Width = 137
     Height = 21
     TabOrder = 13
     Text = #1053#1057#1061' '#1058#1057
     Visible = False
-    OnChange = ComboBoxTypeChange
     Items.Strings = (
       #1055#1083#1072#1090#1080#1085#1086#1074#1099#1081' '#1072'=0,00385'
       #1055#1083#1072#1090#1080#1085#1086#1074#1099#1081' '#1072'=0,00391'
@@ -200,8 +199,8 @@ object Form1: TForm1
   end
   object ComboBoxR0: TComboBox
     Left = 8
-    Top = 160
-    Width = 94
+    Top = 178
+    Width = 137
     Height = 21
     TabOrder = 14
     Text = 'R0'
@@ -213,42 +212,6 @@ object Form1: TForm1
       '500'
       '1000')
   end
-  object TemperaturePlat: TComboBox
-    Left = 8
-    Top = 187
-    Width = 94
-    Height = 21
-    TabOrder = 15
-    Text = #1044#1080#1072#1087#1072#1079#1086#1085' C'
-    Visible = False
-    Items.Strings = (
-      #1086#1090' -200 '#1076#1086' 0'
-      #1086#1090' 0 '#1076#1086' 850')
-  end
-  object TemperatureCop: TComboBox
-    Left = 8
-    Top = 187
-    Width = 94
-    Height = 21
-    TabOrder = 16
-    Text = #1044#1080#1072#1087#1072#1079#1086#1085' C'
-    Visible = False
-    Items.Strings = (
-      #1086#1090' -180 '#1076#1086' 0'
-      #1086#1090' 0 '#1076#1086' 200')
-  end
-  object TemperatureNik: TComboBox
-    Left = 8
-    Top = 187
-    Width = 94
-    Height = 21
-    TabOrder = 17
-    Text = #1044#1080#1072#1087#1072#1079#1086#1085' C'
-    Visible = False
-    Items.Strings = (
-      #1086#1090' -60 '#1076#1086' 100'
-      #1086#1090' 100 '#1076#1086' 180')
-  end
   object Info: TMemo
     Left = 219
     Top = 228
@@ -257,7 +220,7 @@ object Form1: TForm1
     Lines.Strings = (
       'Info')
     ReadOnly = True
-    TabOrder = 18
+    TabOrder = 15
   end
   object ButtonDiagnostic: TButton
     Left = 460
@@ -265,14 +228,14 @@ object Form1: TForm1
     Width = 120
     Height = 25
     Caption = #1044#1080#1072#1075#1085#1086#1089#1090#1080#1082#1072
-    TabOrder = 19
+    TabOrder = 16
   end
   object ProfileInputGroup: TGroupBox
     Left = 219
     Top = 38
     Width = 225
     Height = 166
-    TabOrder = 21
+    TabOrder = 18
     Visible = False
     object ProfileInpButtonChange: TButton
       Left = 14
@@ -322,14 +285,14 @@ object Form1: TForm1
     Width = 166
     Height = 25
     Caption = #1055#1086#1076#1082#1083#1102#1095#1077#1085#1080#1077' '#1082' '#1091#1089#1090#1088#1086#1081#1089#1090#1074#1091
-    TabOrder = 23
+    TabOrder = 20
   end
   object IncrInputGroup: TGroupBox
     Left = 219
     Top = 49
     Width = 361
     Height = 132
-    TabOrder = 22
+    TabOrder = 19
     Visible = False
     object IncInpLabel: TLabel
       Left = 11
@@ -434,7 +397,7 @@ object Form1: TForm1
     Top = 68
     Width = 286
     Height = 59
-    TabOrder = 20
+    TabOrder = 17
     Visible = False
     StyleElements = [seFont, seClient]
     object StandartInpButtonDel: TButton

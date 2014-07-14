@@ -50,7 +50,6 @@
         <IncludePath>mag\;$(IncludePath)</IncludePath>
         <AllPackageLibs>rtl.lib;vcl.lib</AllPackageLibs>
         <Multithreaded>true</Multithreaded>
-        <_TCHARMapping>char</_TCHARMapping>
         <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
         <DynamicRTL>true</DynamicRTL>
         <UsePackages>true</UsePackages>
@@ -62,6 +61,7 @@
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\release\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
+        <_TCHARMapping>char</_TCHARMapping>
         <PackageImports>adortl;bcbie;bcbsmp;bdertl;bindcomp;bindcompdbx;bindcompfmx;bindcompvcl;bindengine;CodeSiteExpressPkg;CustomIPTransport;DataSnapCommon;dbexpress;dbrtl;dbxcds;DbxCommonDriver;DBXInterBaseDriver;dsnap;fmx;fmxase;fmxdae;fmxobj;FMXTee;FmxTeeUI;frx18;frxDB18;frxe18;ibxpress;IndyCore;IndyIPClient;IndyIPCommon;IndyIPServer;IndyProtocols;IndySystem;inet;inetdbbde;inetdbxpress;Intraweb;MetropolisUILiveTile;rtl;soaprtl;svn;Tee;TeeDB;TeeUI;vcl;vclactnband;vcldb;vcldbx;vcldsnap;vclib;vclie;vclimg;vcltouch;vclx;webdsnap;xmlrtl;$(PackageImports)</PackageImports>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <IncludePath>$(BDSINCLUDE)\windows\vcl;$(IncludePath)</IncludePath>
@@ -75,6 +75,7 @@
         <BCC_PCHName_Clang>magaz.h</BCC_PCHName_Clang>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
+        <_TCHARMapping>char</_TCHARMapping>
         <BCC_OptimizeForSpeed>false</BCC_OptimizeForSpeed>
         <BCC_DisableOptimizations>true</BCC_DisableOptimizations>
         <DCC_Optimize>false</DCC_Optimize>
@@ -97,6 +98,9 @@
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\debug\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <ILINK_AllWarnings>true</ILINK_AllWarnings>
+        <ILINK_SelectedWarnings>false</ILINK_SelectedWarnings>
+        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <_TCHARMapping>char</_TCHARMapping>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
@@ -212,19 +216,19 @@
                 <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin64\borlndmm.dll" Class="DependencyModule">
                     <Platform Name="Win64"/>
                 </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgcrtl.dylib" Class="DependencyModule">
+                    <Platform Name="OSX32"/>
+                </DeployFile>
                 <DeployFile LocalName=".\Win32\Debug\magaz.tds" Configuration="Debug" Class="DebugSymbols">
                     <Platform Name="Win32">
                         <RemoteName>magaz.tds</RemoteName>
                     </Platform>
                 </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgcrtl.dylib" Class="DependencyModule">
+                <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgstl.dylib" Class="DependencyModule">
                     <Platform Name="OSX32"/>
                 </DeployFile>
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32130.dll" Class="DependencyModule">
                     <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgstl.dylib" Class="DependencyModule">
-                    <Platform Name="OSX32"/>
                 </DeployFile>
                 <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin\borlndmm.dll" Class="DependencyModule">
                     <Platform Name="Win32"/>

@@ -48,9 +48,6 @@ __published:	// IDE-managed Components
 	TCheckBox *CheckCorrection;
 	TComboBox *ComboBoxType;
 	TComboBox *ComboBoxR0;
-	TComboBox *TemperaturePlat;
-	TComboBox *TemperatureCop;
-	TComboBox *TemperatureNik;
 	TMemo *Info;
 	TButton *ButtonDiagnostic;
 	TGroupBox *StandartInputGroup;
@@ -62,7 +59,6 @@ __published:	// IDE-managed Components
 	TButton *ConnectionButton;
 	TOpenDialog *OpenDialog1;
 	void __fastcall RadioPhysValClick(TObject *Sender);
-	void __fastcall ComboBoxTypeChange(TObject *Sender);
 	void __fastcall EnterOm(TObject *Sender, System::WideChar &Key);
 	void __fastcall RadioWorkModeClick(TObject *Sender);
 	void __fastcall InpTypeChange(TObject *Sender);
