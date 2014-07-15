@@ -28,49 +28,12 @@ void __fastcall TForm3::FormCreate(TObject *Sender)
 			inputs[i][j]->Left = 24 + 96*i;
 
 			inputs[i][j]->Text = "12";
-			inputs[i][j]->OnKeyPress = EnterVal;
 
 			inputs[i][j]->EditLabel->Caption = FloatToStr(pow(10, (4 - i))*(j + 1));
 		}
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm3::EnterVal(TObject *Sender, System::WideChar &Key)
-{
-	TEdit *txtbox = static_cast<TEdit*>(Sender);
-	AnsiString tmp = txtbox->Text;
-	if (Key != 13) {
-		if (isdigit(Key) || Key == 8 || Key == ','){
-			if (Key == ',')
-				if (tmp.IsEmpty()){
-					tmp = "0";
-					txtbox->Text = tmp;
-					txtbox->SelStart=2;
-				}
-				else
-				if (tmp.Pos(",") != 0)
-					Key = 0;
-			if ((tmp.Length() == 5) & (tmp.Pos(",") == 0) & (Key != ',') & (Key != 8)){
-				tmp += ",";
-				txtbox->Text = tmp;
-				txtbox->SelStart = 6;
-			}
-
-			if (isdigit(Key) && (tmp.Pos(",") != 0))
-				if (tmp.Length() - tmp.Pos(",") > 3)
-					Key = 0;
-		}
-		else
-			Key = 0;
-	}
-	else
-		if (tmp.Pos(",") == 0) {
-			tmp += ",00";
-			txtbox->Text = tmp;
-			txtbox->SelStart = tmp.Length();
-		}
-}
-//---------------------------------------------------------------------------
 
 void __fastcall TForm3::SaveButtonClick(TObject *Sender)
 {
@@ -101,6 +64,8 @@ void __fastcall TForm3::SaveButtonClick(TObject *Sender)
 		SaveDialog->FileName = defaultName.c_str();
 
 		ShowMessage("Done!");
+		Form3->Close();
 	}
 }
 //---------------------------------------------------------------------------
+

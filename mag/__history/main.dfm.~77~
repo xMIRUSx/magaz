@@ -12,7 +12,6 @@ object Form1: TForm1
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object LabelAuto: TLabel
@@ -135,7 +134,6 @@ object Form1: TForm1
     Height = 25
     Caption = #1054#1090#1082#1088#1099#1090#1100
     TabOrder = 6
-    OnClick = ButtonFProfileOpenClick
   end
   object ButtonFProfileEdit: TButton
     Left = 71
@@ -222,7 +220,6 @@ object Form1: TForm1
     Lines.Strings = (
       'Info')
     ReadOnly = True
-    ScrollBars = ssVertical
     TabOrder = 15
   end
   object ButtonDiagnostic: TButton
@@ -428,8 +425,7 @@ object Form1: TForm1
       TabOrder = 2
     end
   end
-  object OpenDialog: TOpenDialog
-    DefaultExt = 'txt'
+  object OpenDialog1: TOpenDialog
     Filter = #1058#1077#1082#1089#1090#1086#1074#1099#1081' '#1092#1072#1081#1083'|*.txt'
     Left = 88
     Top = 488

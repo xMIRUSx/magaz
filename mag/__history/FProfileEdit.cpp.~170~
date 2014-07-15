@@ -28,14 +28,13 @@ void __fastcall TForm3::FormCreate(TObject *Sender)
 			inputs[i][j]->Left = 24 + 96*i;
 
 			inputs[i][j]->Text = "12";
-			inputs[i][j]->OnKeyPress = EnterVal;
 
 			inputs[i][j]->EditLabel->Caption = FloatToStr(pow(10, (4 - i))*(j + 1));
 		}
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm3::EnterVal(TObject *Sender, System::WideChar &Key)
+void __fastcall TForm1::EnterOm(TObject *Sender, System::WideChar &Key)
 {
 	TEdit *txtbox = static_cast<TEdit*>(Sender);
 	AnsiString tmp = txtbox->Text;
@@ -57,7 +56,7 @@ void __fastcall TForm3::EnterVal(TObject *Sender, System::WideChar &Key)
 			}
 
 			if (isdigit(Key) && (tmp.Pos(",") != 0))
-				if (tmp.Length() - tmp.Pos(",") > 3)
+				if (tmp.Length() - tmp.Pos(",") > 1)
 					Key = 0;
 		}
 		else
@@ -104,3 +103,4 @@ void __fastcall TForm3::SaveButtonClick(TObject *Sender)
 	}
 }
 //---------------------------------------------------------------------------
+

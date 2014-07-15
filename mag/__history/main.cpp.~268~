@@ -168,7 +168,8 @@ void __fastcall TForm1::ButtonFProfileOpenClick(TObject *Sender)
 			for (int j = 0; j < 9; j++) {
 				fscanf(fl, "%s", tmp);
 				Fprofile[i][j] = StrToFloat(tmp);
-//				Info->Lines->Add(FloatToStr(Fprofile[i][j]));
+				temp = Fprofile[i][j];
+				Info->Lines->Add(FloatToStr(temp));
 			}
 		delete[] tmp;
 		fclose(fl);

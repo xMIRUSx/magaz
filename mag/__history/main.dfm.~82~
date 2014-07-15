@@ -12,7 +12,6 @@ object Form1: TForm1
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object LabelAuto: TLabel
@@ -222,7 +221,6 @@ object Form1: TForm1
     Lines.Strings = (
       'Info')
     ReadOnly = True
-    ScrollBars = ssVertical
     TabOrder = 15
   end
   object ButtonDiagnostic: TButton

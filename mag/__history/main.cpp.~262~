@@ -150,6 +150,9 @@ void __fastcall TForm1::ProfileInpButtonCreateClick(TObject *Sender)
 void __fastcall TForm1::ButtonFProfileOpenClick(TObject *Sender)
 {
 	FILE* fl;
+
+//	Fprofile[0][0] = 33.7;
+
 	if (OpenDialog->Execute()) {
 		char* path;
 		path = new char[100];
@@ -167,8 +170,10 @@ void __fastcall TForm1::ButtonFProfileOpenClick(TObject *Sender)
 		for(int i = 0; i < 7; i++)
 			for (int j = 0; j < 9; j++) {
 				fscanf(fl, "%s", tmp);
-				Fprofile[i][j] = StrToFloat(tmp);
-//				Info->Lines->Add(FloatToStr(Fprofile[i][j]));
+				double temp = StrToFloat(tmp);
+				Fprofile[i].push_back(temp);
+				temp = Fprofile[i][j];
+				Info->Lines->Add(FloatToStr(temp));
 			}
 		delete[] tmp;
 		fclose(fl);
@@ -178,9 +183,9 @@ void __fastcall TForm1::ButtonFProfileOpenClick(TObject *Sender)
 
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-	Fprofile = new double*[7];
+	Fprofile.resize(7);
 	for(size_t i = 0; i < 7; ++i)
-		Fprofile[i] = new double[9];
+		Fprofile[i].resize(9);
 }
 //---------------------------------------------------------------------------
 

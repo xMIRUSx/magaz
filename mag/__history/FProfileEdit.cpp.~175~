@@ -35,7 +35,7 @@ void __fastcall TForm3::FormCreate(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm3::EnterVal(TObject *Sender, System::WideChar &Key)
+void __fastcall TForm1::EnterVal(TObject *Sender, System::WideChar &Key)
 {
 	TEdit *txtbox = static_cast<TEdit*>(Sender);
 	AnsiString tmp = txtbox->Text;

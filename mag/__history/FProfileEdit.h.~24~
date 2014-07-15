@@ -11,7 +11,6 @@
 #include <Vcl.Dialogs.hpp>
 #include <cstdio>
 #include <cstdlib>
-#include <string.h>
 //---------------------------------------------------------------------------
 class TForm3 : public TForm
 {
@@ -21,8 +20,6 @@ __published:	// IDE-managed Components
 	TButton *SaveButton;
 	TLabeledEdit *R0;
 	void __fastcall FormCreate(TObject *Sender);
-	void __fastcall SaveButtonClick(TObject *Sender);
-	void __fastcall EnterVal(TObject *Sender, System::WideChar &Key);
 private:	// User declarations
 public:		// User declarations
 	TLabeledEdit* inputs[7][9];

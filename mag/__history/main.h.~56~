@@ -65,15 +65,14 @@ __published:	// IDE-managed Components
 	void __fastcall ButtonFProfileCreateClick(TObject *Sender);
 	void __fastcall ProfileInpButtonCreateClick(TObject *Sender);
 	void __fastcall ButtonFProfileOpenClick(TObject *Sender);
-	void __fastcall FormCreate(TObject *Sender);
 
 private:	// User declarations
 public:		// User declarations
 
 	//двумерный вектор + одиночный дабл для профиля номинальных значений
 	//вектор для рабочего профиля
-	double* profile;
-	double** Fprofile;
+	std::vector<double> profile;
+	std::vector< std::vector<double> > Fprofile;
 	double FprofileR0;
 
 	__fastcall TForm1(TComponent* Owner);
