@@ -11,6 +11,7 @@
 #include <Vcl.Dialogs.hpp>
 #include <fstream>
 #include <vector>
+#include <cmath>
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
@@ -58,6 +59,10 @@ __published:	// IDE-managed Components
 	TLabel *Label3;
 	TButton *ConnectionButton;
 	TOpenDialog *OpenDialog;
+	TListBox *StandartInpList;
+	TButton *StandartInpButtonSaveAsProfile;
+	TSaveDialog *SaveDialog;
+	TTimer *Timer;
 	void __fastcall RadioPhysValClick(TObject *Sender);
 	void __fastcall EnterOm(TObject *Sender, System::WideChar &Key);
 	void __fastcall RadioWorkModeClick(TObject *Sender);
@@ -65,16 +70,43 @@ __published:	// IDE-managed Components
 	void __fastcall ButtonFProfileCreateClick(TObject *Sender);
 	void __fastcall ProfileInpButtonCreateClick(TObject *Sender);
 	void __fastcall ButtonFProfileOpenClick(TObject *Sender);
-	void __fastcall FormCreate(TObject *Sender);
+	void __fastcall ButtonFProfileEditClick(TObject *Sender);
+	void __fastcall ProfileInpButtonOpenClick(TObject *Sender);
+	void __fastcall ProfileInpButtonChangeClick(TObject *Sender);
+	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+	void __fastcall StandartInpButtonDelClick(TObject *Sender);
+	void __fastcall ButtonDiagnosticClick(TObject *Sender);
+	void __fastcall StandartInpButtonEnterClick(TObject *Sender);
+	void __fastcall StandartInpButtonSaveAsProfileClick(TObject *Sender);
+	void __fastcall IncrInpButtonEnterClick(TObject *Sender);
+	void __fastcall TimerIncr(TObject *Sender);
+	void __fastcall TimerProfile(TObject *Sender);
+	void __fastcall ProfileInpButtonEnterClick(TObject *Sender);
+	void __fastcall CheckBoxOtklonClick(TObject *Sender);
+	void __fastcall EditAutoKeyPress(TObject *Sender, System::WideChar &Key);
+
 
 private:	// User declarations
+
+	//путь к файлу, в котором хранится текущий рабочий профиль
+    String profilePath;
+
+	//для инкрементного/декрементного ввода
+	double incrStrt, incrEnd, incrStep, incrNextVal;
+
+	//загрузка профиля номинальных значений из файла
+	void LoadFprofile(char* path);
+	String SendToDevice(double val);
+
+
+
+
 public:		// User declarations
 
-	//двумерный вектор + одиночный дабл для профиля номинальных значений
-	//вектор для рабочего профиля
-	double* profile;
+	//значения текущего профиля номинальных значений и путь к файлу
 	double** Fprofile;
 	double FprofileR0;
+	char* FprofilePath;
 
 	__fastcall TForm1(TComponent* Owner);
 };

@@ -9,6 +9,7 @@
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.Dialogs.hpp>
+#include "main.h"
 #include <cstdio>
 #include <cstdlib>
 #include <string.h>
@@ -24,9 +25,11 @@ __published:	// IDE-managed Components
 	void __fastcall SaveButtonClick(TObject *Sender);
 	void __fastcall EnterVal(TObject *Sender, System::WideChar &Key);
 private:	// User declarations
+	char* editFile;
 public:		// User declarations
 	TLabeledEdit* inputs[7][9];
 	__fastcall TForm3(TComponent* Owner);
+	__fastcall TForm3(TComponent* Owner, char* filepath);
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForm3 *Form3;
