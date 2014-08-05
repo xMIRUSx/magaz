@@ -26,12 +26,13 @@ __published:	// IDE-managed Components
 	TSaveDialog *SaveDialog;
 	TButton *ButtonReplace;
 	TEdit *EditReplace;
-	void __fastcall ButtonAddClick(TObject *Sender);
 	void __fastcall ButtonUpClick(TObject *Sender);
 	void __fastcall ButtonDownClick(TObject *Sender);
 	void __fastcall ButtonDeleteClick(TObject *Sender);
 	void __fastcall ButtonSaveClick(TObject *Sender);
 	void __fastcall ButtonReplaceClick(TObject *Sender);
+	void __fastcall EnterVal(TObject *Sender, System::WideChar &Key);
+	void __fastcall ButtonAddClick(TObject *Sender);
 private:	// User declarations
 	String editFile;
 public:		// User declarations

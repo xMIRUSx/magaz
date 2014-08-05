@@ -46,6 +46,7 @@ object Form3: TForm3
     LabelPosition = lpLeft
     TabOrder = 0
     Text = '99'
+    OnExit = AddZero
     OnKeyPress = EnterVal
   end
   object SaveDialog: TSaveDialog

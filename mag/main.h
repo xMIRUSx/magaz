@@ -10,7 +10,6 @@
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.Dialogs.hpp>
 #include <fstream>
-#include <vector>
 #include <cmath>
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
@@ -63,6 +62,8 @@ __published:	// IDE-managed Components
 	TButton *StandartInpButtonSaveAsProfile;
 	TSaveDialog *SaveDialog;
 	TTimer *Timer;
+	TLabel *StandartInpOtklon1;
+	TLabel *StandartInpOtklon;
 	void __fastcall RadioPhysValClick(TObject *Sender);
 	void __fastcall EnterOm(TObject *Sender, System::WideChar &Key);
 	void __fastcall RadioWorkModeClick(TObject *Sender);
@@ -84,6 +85,10 @@ __published:	// IDE-managed Components
 	void __fastcall ProfileInpButtonEnterClick(TObject *Sender);
 	void __fastcall CheckBoxOtklonClick(TObject *Sender);
 	void __fastcall EditAutoKeyPress(TObject *Sender, System::WideChar &Key);
+	void __fastcall ConnectionButtonClick(TObject *Sender);
+	void __fastcall RadioDeviceClick(TObject *Sender);
+	void __fastcall ButtonFProfileSendClick(TObject *Sender);
+	void __fastcall AddZero(TObject *Sender);
 
 
 private:	// User declarations
@@ -94,12 +99,17 @@ private:	// User declarations
 	//для инкрементного/декрементного ввода
 	double incrStrt, incrEnd, incrStep, incrNextVal;
 
+	bool checkIncVals();
+	String CalcOtkl(String val);
+	double CalcNominal(double val);
+	String CorrectVal(String str);
+
 	//загрузка профиля номинальных значений из файла
+
 	void LoadFprofile(char* path);
-	String SendToDevice(double val);
+	void SendToDevice(String val);
 
-
-
+	const char* devID;
 
 public:		// User declarations
 

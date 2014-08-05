@@ -4,29 +4,50 @@
 
 #include <vcl.h>
 
-#include <io.h>         //для работы с файлами
-#include <fcntl.h>      //для работы с файлами
-#include <sys\stat.h>   //для работы с файлами
-
 #include "port.h"
+#include "main.h"
 #include <stdio.h>
+#include <string.h>
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma resource "*.dfm"
-#define BUFSIZE 255
+int handle;
 
-unsigned long bytecnt;
-unsigned char bufrd[BUFSIZE], bufwr[BUFSIZE]; //приёмный и передающий буферы
+void ReadBuf()
+{
 
-HANDLE COMport;		//дескриптор порта
-HANDLE reader;	//дескриптор потока чтения из порта
-HANDLE writer;	//дескриптор потока записи в порт
+	String rdt = (UnicodeString)(char*)bufrd;
 
-OVERLAPPED olread;
-OVERLAPPED olwrite;
 
-bool fl = false;
+	if (*bufrd == *ID)
+	{
+        connected = true;
+		strcpy(bufwr,"D");
+		ResumeThread(writer);
+		Form1->Info->Lines->Add("Устройство подключено!");
+		Form1->ConnectionButton->Caption = "Отключение устройства";
+	}
 
+	if( *bufrd=='I')
+	{
+		strcpy(bufwr,"I");
+		ResumeThread(writer);
+	}
+	else
+	{
+        Form1->Info->Lines->Add("##BUFRD##");
+		Form1->Info->Lines->Add(rdt);
+		Form1->Info->Lines->Add("#########");
+
+    }
+	if( *bufrd=='B')
+	{
+		Form1->Info->Lines->Add("НОМИНАЛ УСТАНОВЛЕН");
+		Form1->Info->Lines->Add("ВВЕДИТЕ НОМИНАЛ");
+		ResumeThread(writer);
+	}
+
+	memset(bufrd, 0, BUFSIZE);	        //очистить буфер
+}
 
 DWORD WINAPI ReceiveFromDeviceThread(LPVOID)
 {
@@ -64,8 +85,7 @@ DWORD WINAPI ReceiveFromDeviceThread(LPVOID)
 			{
 			 //прочитать байты из порта в буфер программы
 			 ReadFile(COMport, bufrd, btr, &temp, &olread);
-			 bytecnt+=btr; //увеличиваем счётчик байтов
-//			 ReadPrinting(); //вызываем функцию для вывода данных на экран и в файл
+			 ReadBuf(); //вызываем функцию для вывода данных на экран и в файл
 			}
 		   }
 		}
@@ -87,15 +107,13 @@ DWORD WINAPI SendToDeviceThread(LPVOID)
 		//если операция завершилась успешно, установить соответствующий флажок
 		if((signal == WAIT_OBJECT_0) && (GetOverlappedResult(COMport, &olwrite, &temp, true)))
 		{
-			fl = true;
-			//вывод сообщения об успешной установке
+		 ;;	//вывод сообщения об успешной установке
 		}
 		else
 		{
-			fl = false;
-			//сообщение об ошибке
+			Form1->Info->Lines->Add("Значение не отправлено");
 		}
-    	SuspendThread(/*имя потока */);
+    	SuspendThread(writer);
 	}
 }
 
@@ -109,6 +127,8 @@ void ClosePort()
 //	      После чего нужно освободить и сам дескриптор потока.
 
  //если поток записи работает, завершить его; проверка if(writer) обязательна, иначе возникают ошибки
+
+ connected = false;
  if(writer)
  {
 	TerminateThread(writer,0);
@@ -139,11 +159,13 @@ void OpenPort(String portname)
 //	 portname = ;	//получить имя выбранного порта
 
 	 //открыть порт, для асинхронных операций обязательно нужно указать флаг FILE_FLAG_OVERLAPPED
-	 COMport = CreateFile(portname.c_str(),GENERIC_READ | GENERIC_WRITE, 0,
-				  NULL, OPEN_EXISTING, FILE_FLAG_OVERLAPPED, NULL);
+	char* port;
+	port = new char[15];
+	wcstombs(port, portname.c_str(), 15);
+
+	COMport = CreateFile(port, GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, FILE_FLAG_OVERLAPPED, NULL);
 	 //здесь:
-	 // - portname.c_str() - имя порта в качестве имени файла,
-	 //   c_str() преобразует строку типа String в строку в виде массива типа char, иначе функция не примет
+	 // - port - имя порта в качестве имени файла,
 	 // - GENERIC_READ | GENERIC_WRITE - доступ к порту на чтение/записть
 	 // - 0 - порт не может быть общедоступным (shared)
 	 // - NULL - дескриптор порта не наследуется, используется дескриптор безопасности по умолчанию
@@ -152,7 +174,10 @@ void OpenPort(String portname)
 	 // - NULL - указатель на файл шаблона не используется при работе с портами
 
 	 if(COMport == INVALID_HANDLE_VALUE)            //если ошибка открытия порта
+	 {
+// 	   Form1->Info->Lines->Add(GetLastError());
 	   return;
+	 }
 
 	 //инициализация порта
 
@@ -170,7 +195,7 @@ void OpenPort(String portname)
 	  }
 
 	 //инициализация структуры DCB
-	 dcb.BaudRate = 9600; //задаём скорость передачи 115200 бод
+	 dcb.BaudRate = 9600; //задаём скорость передачи
 	 dcb.fBinary = TRUE;                              //включаем двоичный режим обмена
 	 dcb.fOutxCtsFlow = FALSE;                        //выключаем режим слежения за сигналом CTS
 	 dcb.fOutxDsrFlow = FALSE;                        //выключаем режим слежения за сигналом DSR
@@ -193,11 +218,11 @@ void OpenPort(String portname)
 	  }
 
 	 //установить таймауты
-	 timeouts.ReadIntervalTimeout = 0;	 	//таймаут между двумя символами
-	 timeouts.ReadTotalTimeoutMultiplier = 0;	//общий таймаут операции чтения
-	 timeouts.ReadTotalTimeoutConstant = 0;       //константа для общего таймаута операции чтения
-	 timeouts.WriteTotalTimeoutMultiplier = 0;    //общий таймаут операции записи
-	 timeouts.WriteTotalTimeoutConstant = 0;      //константа для общего таймаута операции записи
+	 timeouts.ReadIntervalTimeout = 1;	 	//таймаут между двумя символами
+	 timeouts.ReadTotalTimeoutMultiplier = 1;	//общий таймаут операции чтения
+	 timeouts.ReadTotalTimeoutConstant = 1;       //константа для общего таймаута операции чтения
+	 timeouts.WriteTotalTimeoutMultiplier = 1;    //общий таймаут операции записи
+	 timeouts.WriteTotalTimeoutConstant = 1;      //константа для общего таймаута операции записи
 
 	 //записать структуру таймаутов в порт
 	 //если не удалось - закрыть порт и вывести сообщение об ошибке в строке состояния
@@ -212,45 +237,53 @@ void OpenPort(String portname)
 	 SetupComm(COMport,2000,2000);
 
 			 //создать или открыть существующий файл для записи принимаемых данных
-			 /*
+
 			 handle = open("test.txt", O_CREAT | O_APPEND | O_BINARY | O_WRONLY, S_IREAD | S_IWRITE);
 
 			 if(handle==-1)		//если произошла ошибка открытия файла
 			  {
 			   //вывести сообщение об этом в командной строке
-			   Form1->StatusBar1->Panels->Items[1]->Text = "Ошибка открытия файла";
-			   Form1->Label6->Hide();                                               //спрятать надпись с именем файла
-			   Form1->CheckBox3->Checked = false;                                   //сбросить и отключить галочку
-			   Form1->CheckBox3->Enabled = false;
+			   Form1->Info->Lines->Add("Ошибка открытия файла");
 			  }
 			 //иначе вывести в строке состояния сообщение об успешном открытии файла
-			 else { Form1->StatusBar1->Panels->Items[0]->Text = "Файл открыт успешно"; }
-			 */
+			 else {
+//				Form1->Info->Lines->Add("КСЭ-01В ПОДКЛЮЧЕН");
+				}
+
 	 PurgeComm(COMport, PURGE_RXCLEAR);	//очистить принимающий буфер порта
 
+ //  	 EscapeCommFunction(COMport, SETDTR);
+ //	 EscapeCommFunction(COMport, SETRTS);
+
 	 reader = CreateThread(NULL, 0, ReceiveFromDeviceThread, NULL, 0, NULL);  //создать и запустить поток чтения байтов
-	 reader->FreeOnTerminate = true;  //установить это свойство потока,
-					  //чтобы он автоматически уничтожался после завершения
-
-
-	//поменять капшн на кнопке
-	bytecnt = 0;
-
+	 writer = CreateThread(NULL, 0, SendToDeviceThread, NULL, CREATE_SUSPENDED, NULL);	//создаём поток записи в остановленном состоянии (предпоследний параметр = CREATE_SUSPENDED)
 }
 
 
 //функция поиска и подключения устройства
-void FindDevice()
+void FindDevice(const char* devID)
 {
+	ID = devID;
+	strcpy(bufwr, ID);
+
 	String port = "\\\\.\\COM";
-	for (int i = 0; i < 255; i++)
+
+	int i = 1;
+	while ((!connected) && (i < 257))
+
 	{
 		OpenPort(port + IntToStr(i));
+
 		if(COMport != INVALID_HANDLE_VALUE)
-			break;
+		{
+			ResumeThread(writer);
+			 Sleep(1000);
+		}
+		i++;
 	}
 	if (COMport == INVALID_HANDLE_VALUE)
 	{
-		//устройство не найдено
+		Form1->Info->Lines->Add("Устройство не найдено!!!");
 	}
 }
+

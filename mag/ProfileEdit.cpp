@@ -20,19 +20,21 @@ __fastcall TForm2::TForm2(TComponent* Owner, String filepath)
 {
 	editFile = filepath;
 }
-//---------------------------------------------------------------------------
 
+//---------------------------------------------------------------------------
 void __fastcall TForm2::ButtonAddClick(TObject *Sender)
 {
-	String tmp = Edit->Text;
-	//если в строке не найдена ',', приписать в конец ",00"
+	Form1->AddZero(Edit);
 	ListBox->Items->Add(Edit->Text);
 }
 
 void __fastcall TForm2::ButtonDeleteClick(TObject *Sender)
 {
 	if (ListBox->ItemIndex != -1)
+	{
+        Form1->AddZero(EditReplace);
 		ListBox->Items->Delete(ListBox->ItemIndex);
+	}
 }
 
 void __fastcall TForm2::ButtonReplaceClick(TObject *Sender)
@@ -93,6 +95,52 @@ void __fastcall TForm2::ButtonSaveClick(TObject *Sender)
 		SaveDialog->FileName = defaultName.c_str();
 
 		ShowMessage("Done!");
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm2::EnterVal(TObject *Sender, System::WideChar &Key)
+{
+	TEdit *txtbox = static_cast<TEdit*>(Sender);
+	AnsiString tmp = txtbox->Text;
+	if (Key != 13)
+	{
+		if (isdigit(Key) || Key == 8 || Key == ',' || Key == '-')
+		{
+			if ((Key == '-') && !tmp.IsEmpty())
+				Key = 0;
+
+			if (Key == ',')
+				if (tmp.IsEmpty())
+				{
+					tmp = "0";
+					txtbox->Text = tmp;
+					txtbox->SelStart=2;
+				}
+				else
+				if (tmp.Pos(",") != 0)
+					Key = 0;
+			if ((tmp.Length() == 5) & (tmp.Pos(",") == 0) & (Key != ',') & (Key != 8))
+			{
+				tmp += ",";
+				txtbox->Text = tmp;
+				txtbox->SelStart = 6;
+			}
+
+			if (isdigit(Key) && (tmp.Pos(",") != 0))
+				if (tmp.Length() - tmp.Pos(",") > 1)
+					Key = 0;
+		}
+		else
+			Key = 0;
+	}
+	else
+	{
+		Key = 0;
+		if (txtbox->Name == "Edit")
+			ButtonAddClick(this);
+		else
+			ButtonReplaceClick(this);
 	}
 }
 //---------------------------------------------------------------------------

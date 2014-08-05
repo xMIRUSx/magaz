@@ -2,7 +2,7 @@ object Form1: TForm1
   Left = 0
   Top = 0
   BorderStyle = bsSingle
-  Caption = 'Form1'
+  Caption = #1055#1059#1057#1050
   ClientHeight = 505
   ClientWidth = 500
   Color = clBtnFace
@@ -45,14 +45,14 @@ object Form1: TForm1
   end
   object Label1: TLabel
     Left = 8
-    Top = 364
+    Top = 369
     Width = 134
     Height = 13
     Caption = #1055#1088#1086#1092#1080#1083#1100' '#1076#1077#1081#1089#1090#1074#1080#1090#1077#1083#1100#1085#1099#1093
   end
   object Label2: TLabel
     Left = 8
-    Top = 380
+    Top = 388
     Width = 127
     Height = 13
     Caption = #1079#1085#1072#1095#1077#1085#1080#1081' '#1089#1086#1087#1088#1086#1090#1080#1074#1083#1077#1085#1080#1103
@@ -115,10 +115,12 @@ object Form1: TForm1
     Width = 137
     Height = 65
     Caption = #1058#1080#1087' '#1087#1088#1080#1073#1086#1088#1072
+    ItemIndex = 0
     Items.Strings = (
       #1052#1057'3070'#1055#1059'-01'#1042
       #1050#1057#1069'-01'#1042)
     TabOrder = 2
+    OnClick = RadioDeviceClick
   end
   object RadioPhysVal: TRadioGroup
     Left = 8
@@ -149,7 +151,7 @@ object Form1: TForm1
   end
   object ButtonFProfileCreate: TButton
     Left = 8
-    Top = 430
+    Top = 438
     Width = 120
     Height = 25
     Caption = #1057#1086#1079#1076#1072#1090#1100' '#1085#1086#1074#1099#1081
@@ -158,7 +160,7 @@ object Form1: TForm1
   end
   object ButtonFProfileOpen: TButton
     Left = 8
-    Top = 399
+    Top = 407
     Width = 57
     Height = 25
     Caption = #1054#1090#1082#1088#1099#1090#1100
@@ -167,7 +169,7 @@ object Form1: TForm1
   end
   object ButtonFProfileEdit: TButton
     Left = 71
-    Top = 399
+    Top = 407
     Width = 57
     Height = 25
     Caption = #1048#1079#1084#1077#1085#1080#1090#1100
@@ -176,11 +178,12 @@ object Form1: TForm1
   end
   object ButtonFProfileSend: TButton
     Left = 8
-    Top = 461
+    Top = 469
     Width = 120
     Height = 25
     Caption = #1047#1072#1087#1080#1089#1072#1090#1100' '#1074' '#1087#1088#1080#1073#1086#1088
     TabOrder = 8
+    OnClick = ButtonFProfileSendClick
   end
   object CheckBoxOtklon: TCheckBox
     Left = 8
@@ -222,7 +225,7 @@ object Form1: TForm1
   end
   object Info: TMemo
     Left = 219
-    Top = 228
+    Top = 236
     Width = 271
     Height = 227
     Lines.Strings = (
@@ -233,7 +236,7 @@ object Form1: TForm1
   end
   object ButtonDiagnostic: TButton
     Left = 404
-    Top = 461
+    Top = 469
     Width = 86
     Height = 25
     Caption = #1044#1080#1072#1075#1085#1086#1089#1090#1080#1082#1072
@@ -242,11 +245,12 @@ object Form1: TForm1
   end
   object ConnectionButton: TButton
     Left = 219
-    Top = 461
+    Top = 469
     Width = 158
     Height = 25
     Caption = #1055#1086#1076#1082#1083#1102#1095#1077#1085#1080#1077' '#1082' '#1091#1089#1090#1088#1086#1081#1089#1090#1074#1091
     TabOrder = 20
+    OnClick = ConnectionButtonClick
   end
   object ProfileInputGroup: TGroupBox
     Left = 219
@@ -298,58 +302,6 @@ object Form1: TForm1
       Height = 121
       ItemHeight = 13
       TabOrder = 4
-    end
-  end
-  object StandartInputGroup: TGroupBox
-    Left = 219
-    Top = 38
-    Width = 271
-    Height = 166
-    TabOrder = 17
-    Visible = False
-    StyleElements = [seFont, seClient]
-    object StandartInpButtonDel: TButton
-      Left = 197
-      Top = 14
-      Width = 57
-      Height = 25
-      Caption = #1057#1073#1088#1086#1089
-      TabOrder = 0
-      OnClick = StandartInpButtonDelClick
-    end
-    object StandartInpEdit: TEdit
-      Left = 14
-      Top = 16
-      Width = 108
-      Height = 21
-      TabOrder = 1
-      OnKeyPress = EnterOm
-    end
-    object StandartInpButtonEnter: TButton
-      Left = 128
-      Top = 14
-      Width = 57
-      Height = 25
-      Caption = #1042#1074#1086#1076
-      TabOrder = 2
-      OnClick = StandartInpButtonEnterClick
-    end
-    object StandartInpList: TListBox
-      Left = 14
-      Top = 44
-      Width = 108
-      Height = 109
-      ItemHeight = 13
-      TabOrder = 3
-    end
-    object StandartInpButtonSaveAsProfile: TButton
-      Left = 128
-      Top = 126
-      Width = 132
-      Height = 27
-      Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100' '#1082#1072#1082' '#1087#1088#1086#1092#1080#1083#1100
-      TabOrder = 4
-      OnClick = StandartInpButtonSaveAsProfileClick
     end
   end
   object IncrInputGroup: TGroupBox
@@ -430,6 +382,7 @@ object Form1: TForm1
       Width = 65
       Height = 21
       TabOrder = 1
+      OnExit = AddZero
       OnKeyPress = EnterOm
     end
     object IncInpEditStart: TEdit
@@ -438,6 +391,7 @@ object Form1: TForm1
       Width = 65
       Height = 21
       TabOrder = 0
+      OnExit = AddZero
       OnKeyPress = EnterOm
     end
     object IncInpEditStep: TEdit
@@ -446,6 +400,7 @@ object Form1: TForm1
       Width = 65
       Height = 21
       TabOrder = 2
+      OnExit = AddZero
       OnKeyPress = EnterOm
     end
     object IncrInpButtonEnter: TButton
@@ -456,6 +411,72 @@ object Form1: TForm1
       Caption = #1057#1090#1072#1088#1090
       TabOrder = 3
       OnClick = IncrInpButtonEnterClick
+    end
+  end
+  object StandartInputGroup: TGroupBox
+    Left = 219
+    Top = 38
+    Width = 271
+    Height = 190
+    TabOrder = 17
+    Visible = False
+    StyleElements = [seFont, seClient]
+    object StandartInpOtklon1: TLabel
+      Left = 14
+      Top = 44
+      Width = 69
+      Height = 13
+      Caption = #1054#1090#1082#1083#1086#1085#1077#1085#1080#1077': '
+    end
+    object StandartInpOtklon: TLabel
+      Left = 82
+      Top = 44
+      Width = 8
+      Height = 13
+      Caption = '--'
+    end
+    object StandartInpButtonDel: TButton
+      Left = 197
+      Top = 14
+      Width = 57
+      Height = 25
+      Caption = #1057#1073#1088#1086#1089
+      TabOrder = 0
+      OnClick = StandartInpButtonDelClick
+    end
+    object StandartInpEdit: TEdit
+      Left = 14
+      Top = 16
+      Width = 108
+      Height = 21
+      TabOrder = 1
+      OnKeyPress = EnterOm
+    end
+    object StandartInpButtonEnter: TButton
+      Left = 128
+      Top = 14
+      Width = 57
+      Height = 25
+      Caption = #1042#1074#1086#1076
+      TabOrder = 2
+      OnClick = StandartInpButtonEnterClick
+    end
+    object StandartInpList: TListBox
+      Left = 14
+      Top = 71
+      Width = 108
+      Height = 108
+      ItemHeight = 13
+      TabOrder = 3
+    end
+    object StandartInpButtonSaveAsProfile: TButton
+      Left = 128
+      Top = 152
+      Width = 132
+      Height = 27
+      Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100' '#1082#1072#1082' '#1087#1088#1086#1092#1080#1083#1100
+      TabOrder = 4
+      OnClick = StandartInpButtonSaveAsProfileClick
     end
   end
   object OpenDialog: TOpenDialog

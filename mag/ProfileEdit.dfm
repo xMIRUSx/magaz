@@ -46,7 +46,7 @@ object Form2: TForm2
     Width = 97
     Height = 21
     TabOrder = 3
-    Text = '12345,6789'
+    OnKeyPress = EnterVal
   end
   object ButtonAdd: TButton
     Left = 136
@@ -90,7 +90,7 @@ object Form2: TForm2
     Width = 89
     Height = 21
     TabOrder = 8
-    Text = '12345,6789'
+    OnKeyPress = EnterVal
   end
   object SaveDialog: TSaveDialog
     DefaultExt = 'txt'

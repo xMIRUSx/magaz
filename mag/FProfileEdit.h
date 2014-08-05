@@ -24,8 +24,11 @@ __published:	// IDE-managed Components
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall SaveButtonClick(TObject *Sender);
 	void __fastcall EnterVal(TObject *Sender, System::WideChar &Key);
+	void __fastcall AddZero(TObject *Sender);
 private:	// User declarations
 	char* editFile;
+
+//	void AddZero(TObject *Sender);
 public:		// User declarations
 	TLabeledEdit* inputs[7][9];
 	__fastcall TForm3(TComponent* Owner);
